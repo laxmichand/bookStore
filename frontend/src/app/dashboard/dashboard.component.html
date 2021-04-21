@@ -11,7 +11,7 @@
 
         <p>
           <input
-            id="input"
+            id="title"
             type="text"
             required
             [(ngModel)]="bookStoreObj.bookObj.title"
@@ -22,7 +22,7 @@
         <label for="fname" class="">Author</label>
         <p>
           <input
-            id="input"
+            id="author"
             type="text"
             required
             [(ngModel)]="bookStoreObj.bookObj.author"
@@ -33,7 +33,7 @@
         <label for="fname" class="">Website</label>
         <p>
           <input
-            id="input"
+            id="webSite"
             type="text"
             required
             [(ngModel)]="bookStoreObj.bookObj.webSite"
@@ -54,7 +54,7 @@
           <!-- <caption> -->
           <!-- Statement Summary -->
           <!-- </caption> -->
-          <thead>
+          <thead style="background-color: white">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
@@ -63,10 +63,8 @@
               <th scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr
-              *ngFor="let row of this.bookStoreObj.bookDataList; let i = index"
-            >
+          <tbody *ngIf="bookStoreObj.bookDataList.length > 0">
+            <tr *ngFor="let row of bookStoreObj.bookDataList; let i = index">
               <td data-label="Account">Visa - 3412</td>
               <td data-label="Due Date">04/01/2016</td>
               <td data-label="Amount">$1,190</td>
@@ -75,6 +73,11 @@
                 <i class="bi bi-pencil-square"></i> &nbsp;
                 <i class="bi bi-trash"></i>
               </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="bookStoreObj.bookDataList.length === 0">
+            <tr col-span="5">
+              <td colspan="5">Nothing Found</td>
             </tr>
           </tbody>
         </table>
