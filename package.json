@@ -1,0 +1,19 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "This is online bookstore Demo Application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laxmichand/bookStore.git"
+  },
+  "author": "laxmichandra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laxmichand/bookStore/issues"
+  },
+  "homepage": "https://github.com/laxmichand/bookStore#readme"
+}
