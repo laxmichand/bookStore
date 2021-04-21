@@ -233,5 +233,6 @@ table th {
   .mobileview {
     padding-right: 0px;
     padding-left: 0px;
+    margin-top: 15px;
   }
 }
