@@ -6,10 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  bookStoreObj:any={
+  bookObj:{
+      title:'',
+      webSite:'',
+      author:''
+  } ,
+  bookDataList:[]
+}
   constructor() { }
 
   ngOnInit(): void {
+  }
+  saveBook(){
+    this.bookStoreObj.bookDataList.push({
+      title:'',
+      webSite:'',
+      author:'' 
+    })
+  }
+
+  resetBook(){
+
   }
 
 }

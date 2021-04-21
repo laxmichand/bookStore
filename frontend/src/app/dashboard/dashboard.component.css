@@ -229,4 +229,9 @@ table th {
   table td:last-child {
     border-bottom: 0;
   }
+
+  .mobileview {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
 }
