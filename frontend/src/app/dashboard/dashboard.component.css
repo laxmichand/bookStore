@@ -35,8 +35,11 @@
 
 .booklistTableborder {
   border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
 }
 
 .lable input[type="text"],
