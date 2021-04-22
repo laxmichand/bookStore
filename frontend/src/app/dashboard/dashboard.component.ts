@@ -17,7 +17,11 @@ export class DashboardComponent implements OnInit {
   };
   constructor(private service: AppService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.service.getAllBooks().subscribe((res) => {
+      this.bookStoreObj.bookDataList = res;
+    });
+  }
   saveBook() {
     let req = {
       title: this.bookStoreObj.bookObj.title,
@@ -25,7 +29,7 @@ export class DashboardComponent implements OnInit {
       author: this.bookStoreObj.bookObj.author,
     };
 
-    this.service.sendGetRequest(req).subscribe(
+    this.service.saveBooks(req).subscribe(
       (data: any) => {
         this.bookStoreObj.bookDataList.push({
           title: data.title,

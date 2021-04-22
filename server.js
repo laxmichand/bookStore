@@ -1,20 +1,14 @@
 const express = require("express");
 const app = express();
 var path = require("path");
-const bodyParser = require("body-parser");
 const { port, endpoint } = require("./backend/src/config/config");
+const dbconn = require("./backend/src/utility/dbConnection");
 
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// app.use(bodyParser.json({ limit: "5mb" }));
-
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+const book = require("./backend/src/routes/book");
+app.use("/book", book);
 
 app.options("/*", (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -45,10 +39,10 @@ app.get(["/"], (req, res) => {
   res.sendFile("index.html", { root: __dirname + "/frontend/dist" });
 });
 
-app.post("/savebook", (req, res) => {
-  console.log("inside", req.body);
-  res.send(req.body);
-});
+// app.post("/savebook", (req, res) => {
+//   console.log("inside", req.body);
+//   res.send(req.body);
+// });
 
 app.listen(`${port}`, function () {
   console.log(

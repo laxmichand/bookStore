@@ -4,7 +4,6 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
-
 import { throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 @Injectable({
@@ -21,9 +20,15 @@ export class AppService {
       'Content-Type': 'application/json',
     }),
   };
-  public sendGetRequest(req: any) {
+  public saveBooks(req: any) {
     return this.http
-      .post(this._api + '/savebook', req)
+      .post(this._api + '/book/savebook', req)
+      .pipe(catchError(this.handleError));
+  }
+
+  public getAllBooks() {
+    return this.http
+      .get(this._api + '/book/getallbook')
       .pipe(catchError(this.handleError));
   }
 
