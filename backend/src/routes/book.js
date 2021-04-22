@@ -28,7 +28,7 @@ router.get("/getallbook", (req, res) => {
   book
     .find()
     .then((data) => {
-      res.send(endpoint);
+      res.send(data);
     })
     .catch((err) => {
       res.send(err);
