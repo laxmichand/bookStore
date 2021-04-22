@@ -1,7 +1,7 @@
 "use strict";
 const mongoose = require("mongoose");
 const book = require("../models/bookSchema");
-
+const { endpoint } = require("../config/config");
 var express = require("express");
 var router = express.Router();
 
@@ -28,7 +28,7 @@ router.get("/getallbook", (req, res) => {
   book
     .find()
     .then((data) => {
-      res.send(data);
+      res.send(endpoint);
     })
     .catch((err) => {
       res.send(err);
