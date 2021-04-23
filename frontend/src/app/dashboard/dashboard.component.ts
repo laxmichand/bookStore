@@ -48,6 +48,7 @@ export class DashboardComponent implements OnInit {
     this.service.saveBooks(query).subscribe(
       (data: any) => {
         this.getAllbooks();
+        this.resetBook();
       },
       (error) => {
         this.loaderService.show(false);
