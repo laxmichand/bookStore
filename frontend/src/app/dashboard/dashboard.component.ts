@@ -18,24 +18,28 @@ export class DashboardComponent implements OnInit {
   constructor(private service: AppService) {}
 
   ngOnInit(): void {
+    this.resetBook();
+    this.getAllbooks();
+  }
+
+  getAllbooks() {
     this.service.getAllBooks().subscribe((res) => {
       this.bookStoreObj.bookDataList = res;
     });
   }
-  saveBook() {
-    let req = {
-      title: this.bookStoreObj.bookObj.title,
-      webSite: this.bookStoreObj.bookObj.webSite,
-      author: this.bookStoreObj.bookObj.author,
-    };
 
-    this.service.saveBooks(req).subscribe(
+  saveBook() {
+    let query = {
+      data: {
+        title: this.bookStoreObj.bookObj.title,
+        webSite: this.bookStoreObj.bookObj.webSite,
+        author: this.bookStoreObj.bookObj.author,
+      },
+      updateCriteria: { id: this.bookStoreObj.bookObj.id },
+    };
+    this.service.saveBooks(query).subscribe(
       (data: any) => {
-        this.bookStoreObj.bookDataList.push({
-          title: data.title,
-          webSite: data.webSite,
-          author: data.author,
-        });
+        this.getAllbooks();
       },
       (error) => {
         console.log('error', error);
@@ -43,5 +47,34 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  resetBook() {}
+  resetBook() {
+    this.bookStoreObj.bookObj = {
+      title: '',
+      webSite: '',
+      author: '',
+      id: '',
+    };
+  }
+
+  operation(row: any, action: any) {
+    this.resetBook();
+    if (action === 'edit') {
+      this.bookStoreObj.bookObj = {
+        title: row.title,
+        webSite: row.webSite,
+        author: row.author,
+        id: row._id,
+      };
+    }
+    if (action === 'delete') {
+      this.service.deletedbyId(row._id).subscribe(
+        (data) => {
+          this.getAllbooks();
+        },
+        (error) => {
+          console.log('error', error);
+        }
+      );
+    }
+  }
 }

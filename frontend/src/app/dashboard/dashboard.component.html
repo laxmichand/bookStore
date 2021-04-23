@@ -70,8 +70,12 @@
               <td data-label="Author">{{ row.author }}</td>
               <td data-label="Website">{{ row.webSite }}</td>
               <td data-label="Action">
-                <i class="bi bi-pencil-square"></i> &nbsp;
-                <i class="bi bi-trash"></i>
+                <i
+                  class="bi bi-pencil-square"
+                  (click)="operation(row, 'edit')"
+                ></i>
+                &nbsp;
+                <i class="bi bi-trash" (click)="operation(row, 'delete')"></i>
               </td>
             </tr>
           </tbody>

@@ -32,6 +32,12 @@ export class AppService {
       .pipe(catchError(this.handleError));
   }
 
+  public deletedbyId(id: any) {
+    return this.http
+      .delete(this._api + '/book/delete/' + id)
+      .pipe(catchError(this.handleError));
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
