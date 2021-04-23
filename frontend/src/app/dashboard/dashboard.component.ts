@@ -29,10 +29,15 @@ export class DashboardComponent implements OnInit {
 
   getAllbooks() {
     this.loaderService.show(true);
-    this.service.getAllBooks().subscribe((res) => {
-      this.bookStoreObj.bookDataList = res;
-      this.loaderService.show(false);
-    });
+    this.service.getAllBooks().subscribe(
+      (res) => {
+        this.bookStoreObj.bookDataList = res;
+        this.loaderService.show(false);
+      },
+      (err) => {
+        this.loaderService.show(false);
+      }
+    );
   }
 
   saveBook() {
