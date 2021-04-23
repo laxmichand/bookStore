@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
+import { LoaderService } from '../loader/loader.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,20 +16,27 @@ export class DashboardComponent implements OnInit {
     },
     bookDataList: [],
   };
-  constructor(private service: AppService) {}
+  constructor(
+    private service: AppService,
+    private loaderService: LoaderService
+  ) {}
 
   ngOnInit(): void {
+    this.loaderService.show(true);
     this.resetBook();
     this.getAllbooks();
   }
 
   getAllbooks() {
+    this.loaderService.show(true);
     this.service.getAllBooks().subscribe((res) => {
       this.bookStoreObj.bookDataList = res;
+      this.loaderService.show(false);
     });
   }
 
   saveBook() {
+    this.loaderService.show(true);
     let query = {
       data: {
         title: this.bookStoreObj.bookObj.title,
@@ -42,6 +50,7 @@ export class DashboardComponent implements OnInit {
         this.getAllbooks();
       },
       (error) => {
+        this.loaderService.show(false);
         console.log('error', error);
       }
     );
@@ -57,6 +66,7 @@ export class DashboardComponent implements OnInit {
   }
 
   operation(row: any, action: any) {
+    this.loaderService.show(true);
     this.resetBook();
     if (action === 'edit') {
       this.bookStoreObj.bookObj = {
@@ -65,13 +75,16 @@ export class DashboardComponent implements OnInit {
         author: row.author,
         id: row._id,
       };
+      this.loaderService.show(false);
     }
     if (action === 'delete') {
       this.service.deletedbyId(row._id).subscribe(
         (data) => {
           this.getAllbooks();
+          this.loaderService.show(false);
         },
         (error) => {
+          this.loaderService.show(false);
           console.log('error', error);
         }
       );

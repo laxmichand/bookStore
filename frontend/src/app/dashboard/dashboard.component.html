@@ -71,11 +71,14 @@
               <td data-label="Website">{{ row.webSite }}</td>
               <td data-label="Action">
                 <i
-                  class="bi bi-pencil-square"
+                  class="bi bi-pencil-square cursercss"
                   (click)="operation(row, 'edit')"
                 ></i>
                 &nbsp;
-                <i class="bi bi-trash" (click)="operation(row, 'delete')"></i>
+                <i
+                  class="bi bi-trash cursercss"
+                  (click)="operation(row, 'delete')"
+                ></i>
               </td>
             </tr>
           </tbody>

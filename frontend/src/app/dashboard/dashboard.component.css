@@ -153,6 +153,10 @@ body > * {
   border-radius: 4px;
 }
 
+.cursercss {
+  cursor: pointer;
+}
+
 table {
   border: 1px solid #ccc;
   border-collapse: collapse;
