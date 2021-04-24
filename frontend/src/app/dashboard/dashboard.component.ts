@@ -2,6 +2,7 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { AppService } from '../app.service';
 import { LoaderService } from '../shared/loader/loader.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,19 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  urlRegex = `(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?`;
+  form = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    Author: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    webSite: new FormControl('', [
+      Validators.required,
+      Validators.pattern(this.urlRegex),
+    ]),
+  });
+
+  get f() {
+    return this.form.controls;
+  }
   bookStoreObj: any = {
     bookObj: {
       title: '',
@@ -33,8 +47,7 @@ export class DashboardComponent implements OnInit {
     this.loaderService.show(true);
     this.service.getAllBooks().subscribe(
       (res) => {
-        this.bookStoreObj.bookDataList = res;
-
+        this.bookStoreObj.bookDataList = res !== null ? res : [];
         this.loaderService.show(false);
       },
       (err) => {
@@ -57,13 +70,12 @@ export class DashboardComponent implements OnInit {
     this.service.saveBooks(query).subscribe(
       (data: any) => {
         this.toastr.success('Record successfully saved.');
-        this.getAllbooks();
         this.resetBook();
+        this.getAllbooks();
       },
       (error) => {
         this.toastr.error('Error while saving record', error);
         this.loaderService.show(false);
-        console.log('error', error);
       }
     );
   }
@@ -75,6 +87,7 @@ export class DashboardComponent implements OnInit {
       author: '',
       id: '',
     };
+    this.form.reset();
   }
 
   operation(row: any, action: any) {
@@ -94,12 +107,13 @@ export class DashboardComponent implements OnInit {
         (data) => {
           this.toastr.success('Record succsessfully deleted');
           this.getAllbooks();
+          this.form.reset();
           this.loaderService.show(false);
         },
         (error) => {
           this.toastr.success('Error while delete record', error);
+          this.form.reset();
           this.loaderService.show(false);
-          console.log('error', error);
         }
       );
     }

@@ -42,6 +42,14 @@
   border-left: none;
 }
 
+.input-bottom {
+  margin-bottom: 5px !important;
+  height: 39px !important;
+}
+.label-font {
+  font-weight: 500;
+}
+
 .lable input[type="text"],
 select {
   width: 100%;
@@ -146,7 +154,12 @@ body > * {
 }
 
 .buttonReset {
-  background-color: red; /* Green */
+  background-color: #af4343;
+  width: 23%;
+}
+
+.buttonsubmit {
+  width: 32%;
 }
 
 .button3 {
@@ -242,4 +255,10 @@ table th {
     padding-left: 0px;
     margin-top: 15px;
   }
+}
+
+.validation {
+  padding: 0px;
+  text-align: center;
+  font-size: 12px;
 }

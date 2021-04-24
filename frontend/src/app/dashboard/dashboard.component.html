@@ -1,5 +1,4 @@
 <div class="container-fuild margin-top-dashboard">
-  <!-- <div class="jumbotron"> -->
   <div class="row rowCustom">
     <div
       class="col-sm-3"
@@ -7,8 +6,87 @@
     >
       <label class="lableCustom labelbookEntry">Add Book</label>
       <div style="border-radius: 4px; padding: 10px">
-        <label for="fname" class="">Title</label>
+        <form [formGroup]="form" (ngSubmit)="saveBook()">
+          <div class="form-group">
+            <label for="fname" class="label-font">Title</label>
+            <input
+              formControlName="name"
+              id="name"
+              type="text"
+              placeholder="Enter title"
+              class="form-control input-bottom"
+              autocomplete="off"
+              [(ngModel)]="bookStoreObj.bookObj.title"
+            />
+            <div
+              *ngIf="f.name.touched && f.name.invalid"
+              class="alert alert-danger validation"
+            >
+              <div *ngIf="f.name.errors.required">Name is required.</div>
+              <div *ngIf="f.name.errors.minlength">
+                Title should be 3 character.
+              </div>
+            </div>
+          </div>
 
+          <div class="form-group">
+            <label for="Author" class="label-font">Author</label>
+            <input
+              formControlName="Author"
+              id="Author"
+              type="text"
+              placeholder="Enter author"
+              class="form-control input-bottom"
+              autocomplete="off"
+              [(ngModel)]="bookStoreObj.bookObj.author"
+            />
+            <div
+              *ngIf="f.Author.touched && f.Author.invalid"
+              class="alert alert-danger validation"
+            >
+              <div *ngIf="f.Author.errors.required">Author is required.</div>
+              <div *ngIf="f.Author.errors.minlength">
+                Author should be 3 character.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="Website" class="label-font">Website</label>
+            <input
+              formControlName="webSite"
+              id="webSite"
+              type="text"
+              placeholder="Enter website"
+              autocomplete="off"
+              class="form-control input-bottom"
+              [(ngModel)]="bookStoreObj.bookObj.webSite"
+            />
+            <div
+              *ngIf="f.webSite.touched && f.webSite.invalid"
+              class="alert alert-danger validation"
+            >
+              <div *ngIf="f.webSite.errors.required">Web site is required.</div>
+              <div *ngIf="f.webSite.errors.pattern">Enter valid url.</div>
+            </div>
+          </div>
+          <button
+            class="btn btn-danger button button3 buttonReset"
+            type="reset"
+          >
+            Reset
+          </button>
+          <button
+            class="btn btn-success button button3 buttonsubmit"
+            type="submit"
+            [disabled]="!form.valid"
+          >
+            Add Book
+          </button>
+        </form>
+      </div>
+      <!-- <div style="border-radius: 4px; padding: 10px">
+        <label for="fname" class="">Title</label>
         <p>
           <input
             id="title"
@@ -44,16 +122,13 @@
           Reset
         </button>
         <button class="button button3" (click)="saveBook()">Add Book</button>
-      </div>
+      </div> -->
     </div>
 
     <div class="col-sm-9 mobileview">
       <label class="lableCustom lableBookList boderBoolist">Book List</label>
       <div class="booklistTableborder">
         <table>
-          <!-- <caption> -->
-          <!-- Statement Summary -->
-          <!-- </caption> -->
           <thead style="background-color: white">
             <tr>
               <th scope="col">#</th>
@@ -68,7 +143,9 @@
               <td data-label="#">{{ i + 1 }}</td>
               <td data-label="Name">{{ row.title }}</td>
               <td data-label="Author">{{ row.author }}</td>
-              <td data-label="Website">{{ row.webSite }}</td>
+              <td data-label="Website" style="word-break: break-all">
+                {{ row.webSite }}
+              </td>
               <td data-label="Action">
                 <i
                   class="bi bi-pencil-square cursercss"
@@ -91,5 +168,4 @@
       </div>
     </div>
   </div>
-  <!-- </div> -->
 </div>
