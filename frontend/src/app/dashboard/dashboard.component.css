@@ -280,6 +280,11 @@ table th {
     white-space: break-spaces;
     width: fit-content;
   }
+  .rowCustom {
+    padding-right: 8px;
+    padding-left: 22px;
+    padding-top: 18px;
+  }
 }
 .validation {
   padding: 0px;
