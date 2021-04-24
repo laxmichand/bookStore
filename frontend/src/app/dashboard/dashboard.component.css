@@ -39,6 +39,15 @@
   border-left: none;
   overflow-y: scroll;
   max-height: 444px;
+  padding: 7px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.textwrape {
+  white-space: nowrap;
+  width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .input-bottom {
@@ -266,6 +275,10 @@ table th {
   }
   .buttonsubmit {
     width: auto;
+  }
+  .textwrape {
+    white-space: break-spaces;
+    width: fit-content;
   }
 }
 .validation {
