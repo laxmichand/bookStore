@@ -47,7 +47,8 @@ export class DashboardComponent implements OnInit {
     this.loaderService.show(true);
     this.service.getAllBooks().subscribe(
       (res) => {
-        this.bookStoreObj.bookDataList = res !== null ? res : [];
+        this.bookStoreObj.bookDataList =
+          res['result'] !== undefined ? res['result'] : [];
         this.loaderService.show(false);
       },
       (err) => {
@@ -103,19 +104,23 @@ export class DashboardComponent implements OnInit {
       this.loaderService.show(false);
     }
     if (action === 'delete') {
-      this.service.deletedbyId(row._id).subscribe(
-        (data) => {
-          this.toastr.success('Record succsessfully deleted');
-          this.getAllbooks();
-          this.form.reset();
-          this.loaderService.show(false);
-        },
-        (error) => {
-          this.toastr.success('Error while delete record', error);
-          this.form.reset();
-          this.loaderService.show(false);
-        }
-      );
+      if (window.confirm('You want to delete this entry.')) {
+        this.service.deletedbyId(row._id).subscribe(
+          (data) => {
+            this.toastr.success('Record succsessfully deleted');
+            this.getAllbooks();
+            this.form.reset();
+            this.loaderService.show(false);
+          },
+          (error) => {
+            this.toastr.success('Error while delete record', error);
+            this.form.reset();
+            this.loaderService.show(false);
+          }
+        );
+      } else {
+        this.loaderService.show(false);
+      }
     }
   }
 }

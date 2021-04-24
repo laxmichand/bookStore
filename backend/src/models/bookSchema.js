@@ -1,9 +1,24 @@
 const mongoose = require("mongoose");
 const bookSchema = new mongoose.Schema(
   {
-    title: String,
-    webSite: String,
-    author: String,
+    title: {
+      type: String,
+      required: [true, "Title reuired"],
+    },
+    webSite: {
+      type: String,
+      required: [true, "webSite reuired"],
+    },
+    author: {
+      type: String,
+      required: [true, "author reuired"],
+    },
+    createdAt: Date,
+    updatedAt: Date,
+    deleted: {
+      type: Boolean,
+      required: [true, "flag required"],
+    },
   },
   { versionKey: false }
 );
