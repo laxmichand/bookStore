@@ -154,11 +154,13 @@ body > * {
 
 .buttonReset {
   background-color: #af4343;
-  width: 23%;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .buttonsubmit {
-  width: 32%;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .button3 {
