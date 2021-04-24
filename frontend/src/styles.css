@@ -2,8 +2,51 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
+@import "~ngx-toastr/toastr";
+
 html,
 body {
   margin: 0px;
   /* height: 100%; */
 }
+
+/* toaster csss start */
+
+#toast-container > div {
+  opacity: 0.9 !important;
+  border-radius: 2px 0px 0px 2px !important;
+  padding: 10px 10px 10px 50px !important;
+  font-size: 0.95rem !important;
+  background-size: 18px !important;
+  box-shadow: none !important;
+  transition: 100ms opacity;
+}
+toast-container > :hover {
+  opacity: 1 !important;
+  cursor: pointer;
+}
+.toast-title {
+  margin-bottom: 5px !important;
+}
+
+.toast-error {
+  background-color: #e54d42 !important;
+  border-right: 5px solid #b82e24;
+}
+
+.toast-warning {
+  background-color: #ffc107 !important;
+  border-right: 5px solid #ffa000;
+}
+
+.toast-success {
+  background-color: #4caf50 !important;
+  border-right: 5px solid #388e3c;
+}
+
+.toast-info {
+  background-color: #2196f3 !important;
+  border-right: 5px solid #1976d2;
+}
+
+/* toaster css end */
