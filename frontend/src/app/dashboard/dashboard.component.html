@@ -142,9 +142,13 @@
             <tr *ngFor="let row of bookStoreObj.bookDataList; let i = index">
               <td data-label="#">{{ i + 1 }}</td>
               <td data-label="Name">{{ row.title }}</td>
-              <td data-label="Author">{{ row.author }}</td>
+              <td data-label="Author">
+                {{ row.author }}
+              </td>
               <td data-label="Website" style="word-break: break-all">
-                {{ row.webSite }}
+                <a href="{{ row.webSite }}" target="_blank">
+                  {{ row.webSite }}</a
+                >
               </td>
               <td data-label="Action">
                 <i
