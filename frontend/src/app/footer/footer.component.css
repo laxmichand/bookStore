@@ -4,7 +4,12 @@
   bottom: 0;
   width: 100%;
   background-color: black;
-  color: black;
+  /* color: black; */
   text-align: center;
   z-index: 10;
+}
+
+.infoIcn {
+  color: orange;
+  cursor: pointer;
 }
