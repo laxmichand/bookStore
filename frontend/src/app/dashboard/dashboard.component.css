@@ -286,10 +286,11 @@ table th {
     padding-top: 18px;
   }
   .aCustom {
-    width: 162px;
+    width: 327px;
     float: right;
   }
 }
+
 .validation {
   padding: 0px;
   text-align: center;
