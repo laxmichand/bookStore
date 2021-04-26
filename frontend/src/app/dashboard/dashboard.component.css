@@ -285,6 +285,10 @@ table th {
     padding-left: 22px;
     padding-top: 18px;
   }
+  .aCustom {
+    width: 162px;
+    float: right;
+  }
 }
 .validation {
   padding: 0px;
