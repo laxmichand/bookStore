@@ -339,3 +339,11 @@ table th {
     float: left;
   }
 }
+
+@media only screen and (min-device-height: 393px) and (max-width: 767px) and (orientation: portrait) {
+  /* Your Styles... */
+  .aCustom {
+    width: 261px;
+    float: left;
+  }
+}
