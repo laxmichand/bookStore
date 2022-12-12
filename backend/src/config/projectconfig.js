@@ -4,8 +4,8 @@ module.exports = {
   },
   db_connection: {
     production: {
-      uri:
-        "mongodb+srv://book:book@cluster0.ijz9u.mongodb.net/books?retryWrites=true&w=majority",
+      uri:       
+        mongodb+srv://laxmi:<laxmi>@cluster0.wwrwn.mongodb.net/?retryWrites=true&w=majority
     },
     development: {
       server: "127.0.0.1:27017",
