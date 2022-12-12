@@ -5,7 +5,7 @@ const dbConn = require("../config/projectconfig").db_connection;
 if (endpoint === "development") {
   var url = `mongodb://${dbConn.development.server}/${dbConn.development.database}`;
 } else {
-  var url = `mongodb+srv://book:book@cluster0.ijz9u.mongodb.net/books?retryWrites=true&w=majority`;
+  var url = `mongodb+srv://laxmi:laxmi@cluster0.wwrwn.mongodb.net/?retryWrites=true&w=majority`;
 }
 console.log(url);
 class Database {
