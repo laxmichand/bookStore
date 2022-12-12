@@ -7,6 +7,7 @@ if (endpoint === "development") {
 } else {
   var url = `mongodb+srv://laxmi:laxmi@cluster0.wwrwn.mongodb.net/?retryWrites=true&w=majority`;
 }
+url = "mongodb+srv://laxmi:laxmi@cluster0.wwrwn.mongodb.net/?retryWrites=true&w=majority"
 console.log(url);
 class Database {
   constructor() {
